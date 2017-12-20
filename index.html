@@ -1,0 +1,50 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>?</title>
+	<img src="./img/img-29.png" style="width:1350px;">
+	<link rel="stylesheet" href="./style.css">
+</head>
+<style>
+	html,body,div,img{margin:0; padding:0; width:100%}
+
+	.circle{ width:200px; height:200px;
+			position: absolute; left:10px right:10px; left:calc(50% - 100px); margin-top:560px;
+			animation: Moving 8s linear infinite;
+			top:50px; left:635px; 
+			/*애니메이션이름 Moving 8초동안 가속도없이 일정한 속도로 infinite(무한반복) 빙글빙글 돌아가게 해볼께요!!*/
+		}
+		@keyframes Moving{
+			0%{ }
+			100%{ transform: rotate(+360deg);}
+		}
+		.circle img{width:100%; height:auto;}
+
+</style>
+
+<body>
+
+	<div class="circle" id="circle">
+		<img src="./img/img-34.png" id="cImg">
+		<!-- 자 이렇게 이미지가 들어갔죠? 이름도 cImg로 붙였어요~-->
+	</div>
+    
+    <script>
+		var newSound = new SoundBH("room5.mp3",16);
+
+
+		(function loop(){ 
+ 
+			var vol = newSound.getGain() / 10; 
+			circle.style.width = vol + "px";
+			circle.style.height = vol + "px";
+			circle.style.borderRadius = vol/2 + "px";
+			circle.style.left = "calc(50% - " + (vol/2) + "px)";
+			circle.style.top = 300 - (vol/2) + "px";
+
+			window.requestAnimationFrame(loop);	
+		})();
+
+	</script>
+     
+</body>
